@@ -20,7 +20,7 @@ namespace DMC4ModelConverter.Types.Shorts
         /// </summary>
         public short Y { get { return _y; } set { _y = value; } }
 
-        public short2(byte x, byte y)
+        public short2(short x, short y)
         {
             _x = x;
             _y = y;

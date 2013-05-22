@@ -26,7 +26,7 @@ namespace DMC4ModelConverter.Types.Shorts
         /// </summary>
         public short Z { get { return _z; } set { _z = value; } }
 
-        public short3(byte x, byte y, byte z)
+        public short3(short x, short y, short z)
         {
             _x = x;
             _y = y;
