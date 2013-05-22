@@ -1,0 +1,6 @@
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\bin\Debug\DMC4ModelConverter.exe.config
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\bin\Debug\DMC4ModelConverter.exe
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\bin\Debug\DMC4ModelConverter.pdb
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\obj\Debug\DMC4ModelConverter.csprojResolveAssemblyReference.cache
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\obj\Debug\DMC4ModelConverter.exe
+c:\users\thesharki\documents\visual studio 2012\Projects\DMC4ModelConverter\DMC4ModelConverter\obj\Debug\DMC4ModelConverter.pdb
