@@ -1,0 +1,8 @@
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\bin\Debug\ModelConverterConsole.exe.config
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\bin\Debug\ModelConverterConsole.exe
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\bin\Debug\ModelConverterConsole.pdb
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\bin\Debug\DMC4ModelConverter.dll
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\bin\Debug\DMC4ModelConverter.pdb
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\obj\Debug\ModelConverterConsole.csprojResolveAssemblyReference.cache
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\obj\Debug\ModelConverterConsole.exe
+E:\SVN\dmc4-model-converter\DMC4ModelConverter\ModelConverterConsole\obj\Debug\ModelConverterConsole.pdb

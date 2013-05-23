@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DMC4ModelConverter
+namespace DMC4ModelConverter.Interfaces
 {
     public interface IModel
     {
-        public void LoadModel(string filepath);
-        public void SaveModel(string filepath);
+        void LoadModel(string filepath);
+        void SaveModel(string filepath);
     }
 }

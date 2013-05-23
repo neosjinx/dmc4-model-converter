@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DMC4ModelConverter.MTFramework;
+using DMC4ModelConverter.Interfaces;
 using System.IO;
 
 using DMC4ModelConverter.Types.Floats;
@@ -26,14 +27,51 @@ namespace DMC4ModelConverter.Wavefront
 
         public static WavefrontModel FromDMC4Model(DMC4Model model)
         {
+            WavefrontModel convertedModel = new WavefrontModel();
+            float3[] vertices = new float3[model.Vertices.Length];
+            float3[] normals = new float3[model.Vertices.Length];
+            float3[] texcoords = new float3[model.Vertices.Length];
+            for (int i = 0; i < model.Vertices.Length; i++)
+            {
+                vertices[i] = new float3((float)model.Vertices[i].Position.X / (float)model.Vertices[i].Position.W,
+                    (float)model.Vertices[i].Position.Y / (float)model.Vertices[i].Position.W,
+                    (float)model.Vertices[i].Position.Z / (float)model.Vertices[i].Position.W);
+                normals[i] = new float3((float)model.Vertices[i].Normals.X / (float)model.Vertices[i].Normals.W,
+                    (float)model.Vertices[i].Normals.Y / (float)model.Vertices[i].Normals.W,
+                    (float)model.Vertices[i].Normals.Z / (float)model.Vertices[i].Normals.W);
+                texcoords[i] = new float3((float)model.Vertices[i].TEXCOORD0.X / (float)short.MaxValue,
+                    (float)model.Vertices[i].TEXCOORD0.Y / (float)short.MaxValue,
+                    0.0f);
+                
+            }
+            short[] tris = new short[model.Triangles.Length];
+            for (int i = 0; i < model.Triangles.Length; i++)
+            {
+                tris[i] = (short)(model.Triangles[i] + 1);//Triangle indexing in Wavefront starts from 1
+            }
+            //Remap vertices (denormalization)
+            foreach (var vertex in vertices)
+            {
+                vertex.X = vertex.X * (model.MaxBoundingbox.X - model.MinBoundingbox.X) + model.MinBoundingbox.X;
+                vertex.Y = vertex.Y * (model.MaxBoundingbox.Y - model.MinBoundingbox.Y) + model.MinBoundingbox.Y;
+                vertex.Z = vertex.Z * (model.MaxBoundingbox.Z - model.MinBoundingbox.Z) + model.MinBoundingbox.Z;
+            }
 
-            return null;
+            convertedModel.Vertices = vertices;
+            convertedModel.Normals = normals;
+            convertedModel.TextureCoordinates = texcoords;
+            convertedModel.Triangles = tris;
+
+            return convertedModel;
         }
 
 
         public void LoadModel(string filepath)
         {
-            throw new NotImplementedException();
+            using (StreamReader reader = new StreamReader(filepath))
+            {
+
+            }
         }
 
         public void SaveModel(string filepath)
@@ -43,35 +81,47 @@ namespace DMC4ModelConverter.Wavefront
                 //Print a header
                 writer.WriteLine("# DMC4 Model Converter - Converted Model");
                 //Print vertices
-                writer.WriteLine("# List of Vertices, with (x,y,z) coordinates");
-                foreach (var vertex in Vertices)
+                if (Vertices != null && Vertices.Length > 0)
                 {
-                    writer.WriteLine(PrintVertex(vertex));
+                    writer.WriteLine("# List of Vertices, with (x,y,z) coordinates");
+                    foreach (var vertex in Vertices)
+                    {
+                        writer.WriteLine(PrintVertex(vertex));
+                    }
+                    writer.WriteLine("");
                 }
-                writer.WriteLine("");
                 //Print texture coordinates
-                writer.WriteLine("# Texture coordinates, in (u ,v ,w) coordinates, these will vary between 0 and 1");
-                foreach (var texcoord in TextureCoordinates)
+                if (TextureCoordinates != null && TextureCoordinates.Length > 0)
                 {
-                    writer.WriteLine(PrintTextureCoord(texcoord));
+                    writer.WriteLine("# Texture coordinates, in (u ,v ,w) coordinates, these will vary between 0 and 1");
+                    foreach (var texcoord in TextureCoordinates)
+                    {
+                        writer.WriteLine(PrintTextureCoord(texcoord));
+                    }
+                    writer.WriteLine("");
                 }
-                writer.WriteLine("");
                 //Print normals
-                writer.WriteLine("# Normals in (x,y,z) form");
-                foreach (var normal in Normals)
+                if (Normals != null && Normals.Length > 0)
                 {
-                    writer.WriteLine(PrintNormal(normal));
+                    writer.WriteLine("# Normals in (x,y,z) form");
+                    foreach (var normal in Normals)
+                    {
+                        writer.WriteLine(PrintNormal(normal));
+                    }
+                    writer.WriteLine("");
                 }
-                writer.WriteLine("");
                 //Print triangles, a.k.a. faces
-                writer.WriteLine("# Face Definitions");
-
-                for(int i = 0; i < Triangles.Length; i+=3)
+                if (Triangles != null && Triangles.Length > 0)
                 {
-                    short[] face = Triangles.Skip(i).Take(3).ToArray();
-                    writer.WriteLine(PrintTriangle(face));
-                }
+                    writer.WriteLine("# Face Definitions");
 
+                    for (int i = 0; i < Triangles.Length; i += 3)
+                    {
+                        short[] face = Triangles.Skip(i).Take(3).ToArray();
+                        writer.WriteLine(PrintTriangle(face));
+                    }
+
+                }
             }
         }
 
