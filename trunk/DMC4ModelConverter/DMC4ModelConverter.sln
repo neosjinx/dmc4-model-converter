@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMC4ModelConverter", "DMC4ModelConverter\DMC4ModelConverter.csproj", "{F313892A-CB46-42BA-8848-6459CA55A17F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelConverterConsole", "ModelConverterConsole\ModelConverterConsole.csproj", "{6D16A206-3B23-4C8B-9145-2C801E23053E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F313892A-CB46-42BA-8848-6459CA55A17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F313892A-CB46-42BA-8848-6459CA55A17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F313892A-CB46-42BA-8848-6459CA55A17F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D16A206-3B23-4C8B-9145-2C801E23053E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D16A206-3B23-4C8B-9145-2C801E23053E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D16A206-3B23-4C8B-9145-2C801E23053E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D16A206-3B23-4C8B-9145-2C801E23053E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
